@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_green"
+    android:orientation="horizontal"
+    app:contentInsetStart="0dp"
+    android:paddingVertical="30dp">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/top_menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:visibility="invisible"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5" />
+
+    <Button
+        android:id="@+id/top_logo"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_rectangle_button"
+        android:backgroundTint="@color/point_green"
+        android:gravity="center"
+
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="Let's Garden"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15.5sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5" />
+
+    <Button
+        android:id="@+id/top_issue"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingLeft="18dp"
+        android:paddingTop="8dp"
+
+        android:paddingRight="18dp"
+        android:paddingBottom="8dp"
+        tools:layout_editor_absoluteX="299dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:visibility="invisible"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+</LinearLayout>

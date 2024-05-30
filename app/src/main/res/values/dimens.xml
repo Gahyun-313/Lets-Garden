@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="current_humidity">50.0</dimen>
+
+    <dimen name="big_title">18sp</dimen>
+    <dimen name="small_title">20sp</dimen>
+</resources>

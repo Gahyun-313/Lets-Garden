@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_middle_box"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/middle_box_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--android:layout_marginTop="100dp"-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:elevation="4dp"
+            android:orientation="vertical">
+
+            <!--https://nuritech.tistory.com/28-->
+
+            <TextView
+                android:id="@+id/progressBar1_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:fontFamily="@font/pretendard_extrabold"
+                android:paddingTop="25dp"
+                android:paddingLeft="80dp"
+                android:layout_marginBottom="-8dp"
+                android:text="초록이는 지금"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/progressBar1_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+
+                    android:fontFamily="@font/pretendard_extrabold"
+                    android:paddingLeft="80dp"
+                    android:text="100%"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+
+                <TextView
+                    android:id="@+id/progressBar1_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/pretendard_extrabold"
+                    android:layout_marginLeft="10dp"
+                    android:text="쾌적해요!"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/progressBar1_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:fontFamily="@font/pretendard_medium"
+                android:paddingLeft="80dp"
+                android:layout_marginTop="-8dp"
+                android:text="잘 자라고 있어요!!"
+                android:textAllCaps="false"
+                android:textColor="@color/bottom_sheet_text2"
+                android:textSize="17sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:paddingVertical="50dp"
+
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progressDrawable="@drawable/circle_progressbar3"
+                    android:progressTint="#15EC53" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:paddingVertical="50dp"
+
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progressDrawable="@drawable/circle_progressbar2"
+                    android:progressTint="#15AEEC"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:paddingVertical="50dp"
+
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progressDrawable="@drawable/circle_progressbar1"
+                    android:progressTint="#5315EC" />
+
+
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:elevation="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/progressBar_total_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="22dp"
+                android:paddingBottom="13dp"
+                android:text="TextView"
+                android:fontFamily="@font/pretendard_medium"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:visibility="gone"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_total"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="250dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:max="100"
+                android:progress="40"
+                android:scaleY="4"
+                android:visibility="gone"
+                android:elevation="5dp"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/middle_box_btn"
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:minHeight="110dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_rectangle_button"
+            android:maxHeight="400dp"/>
+        <!--height, maxHeight : 450 => 400 -->
+
+    </FrameLayout>
+
+
+
+
+</LinearLayout>

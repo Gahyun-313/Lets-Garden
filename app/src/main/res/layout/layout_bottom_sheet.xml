@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    android:minHeight="420dp"
+    android:background="@drawable/bottom_sheet_background"
+
+    app:behavior_peekHeight="300dp"
+    android:orientation="vertical"
+    android:paddingHorizontal="25dp"
+    android:paddingBottom="30dp"
+
+    android:clickable="true"
+    android:focusable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <!--drag_btn-->
+    <LinearLayout
+        android:id="@+id/drag_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="6dp"
+            android:layout_margin="0dp"
+            android:backgroundTint="@color/bottom_btn_grey"
+            android:background="@drawable/round_rectangle_button"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <!--"현재 상태"-->
+    <TextView
+        android:id="@+id/main_text"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:text="현재 상태"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+    <!--"잘 성장할 수 있도록 체크해주세요!"-->
+    <TextView
+        android:id="@+id/sub_text"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_vertical"
+        android:text="잘 성장할 수 있도록 체크해주세요!"
+        android:fontFamily="@font/pretendard_medium"
+        android:textColor="@color/bottom_sheet_text2"
+        android:textSize="17sp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <!--btns-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Collapsed state-->
+        <LinearLayout
+            android:id="@+id/six_btn_collapsed"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:minHeight="280dp"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <Button
+                    android:id="@+id/btn_humidity"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/humidity"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <Button
+                    android:id="@+id/btn_temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/temperature"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <Button
+                    android:id="@+id/btn_air"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/air"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <Button
+                    android:id="@+id/btn_issue"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/issue"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--Expanded state-->
+        <LinearLayout
+            android:id="@+id/six_btn_expanded"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_humidity_ex"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/humidity"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <Button
+                    android:id="@+id/btn_temperature_ex"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/temperature"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_air_ex"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/air"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <Button
+                    android:id="@+id/btn_issue_ex"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/issue"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_water"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/water"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <Button
+                    android:id="@+id/btn_temp_change"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rectangle_button_ripple"
+                    android:text="@string/temp_change"
+                    android:textSize="18dp"
+                    android:stateListAnimator="@null"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Garden1</string>
+
+    <string name="humidity">습도</string>
+    <string name="temperature">온도</string>
+    <string name="air">공기질</string>
+    <string name="issue">알림</string>
+    <string name="water">물주기</string>
+    <string name="temp_change">온도조절</string>
+
+    <string name="title1">초록이는 지금</string>
+    <string name="title2">쾌적해요!</string>
+</resources>
