@@ -10,3 +10,4 @@
 
 <img src="https://github.com/Gahyun-313/Garden1/assets/78289372/0d484207-00bd-4707-a9f0-e68894c0973e" width="200"/>
 <img src="https://github.com/Gahyun-313/Garden1/assets/78289372/96386502-d4d5-4ed9-a985-0b6bc9450c39" width="200"/>
+<img src="https://github.com/Gahyun-313/Garden1/assets/78289372/1dfadf0a-8769-480b-bc1b-d3bbe4b6817b" width="200"/>
