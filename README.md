@@ -7,6 +7,8 @@
 
 - 각 수치(progress_humidity, progress_temperature, progress_air)에 따라 각 버튼 내 text color 변경(SpannableString() 이용함으로써 text 전체의 색깔을 바꾸는 것이 아닌 일부분만 변경)
 
+- TODO: retrofit 라이브러리 이용해 HTTP 통신해야 함
+
 
 <img src="https://github.com/Gahyun-313/Garden1/assets/78289372/0d484207-00bd-4707-a9f0-e68894c0973e" width="200"/>
 <img src="https://github.com/Gahyun-313/Garden1/assets/78289372/96386502-d4d5-4ed9-a985-0b6bc9450c39" width="200"/>
