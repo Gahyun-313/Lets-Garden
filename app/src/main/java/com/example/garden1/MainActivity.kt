@@ -32,13 +32,17 @@ class MainActivity : AppCompatActivity() {
         // TODO: retrofit 라이브러리 이용해 HTTP 통신해야 함
 
         //  **  적정값 설정 **
-        var origin_humidity = 50.0; var origin_temperature = 50.0; var origin_air = 50.0
-        //var origin_humidity: Double = (getString(R.string.origin_humidity)).toDouble() //@values/strings에서 데이터 가져오는 법(getString()은 리소스의 id를 받음을 주의)
+        var origin_humidity = 50.0
+        var origin_temperature = 50.0
+        var origin_air = 50.0
 
         //  **  현재값 설정 **
-        var current_humidity = 40.0; var current_temperature = 45.0; var current_air = 10.0
+        var current_humidity = 40.0
+        var current_temperature = 45.0
+        var current_air = 10.0
         var current_air_string = "-"
 
+        // 적정값 대비 현재값 수치(백분율)
         var progress_humidity: Double = 100*(current_humidity/origin_humidity)
         var progress_temperature: Double = 100*(current_temperature /origin_temperature)
         var progress_air: Double = 100*(current_air /origin_air)
@@ -128,22 +132,26 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //화면 끌어내려 새로고침시 원형그래프 애니메이션 실행
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
         swipeRefreshLayout.setOnRefreshListener { // 화면 끌어내려 새로고침
             swipeRefreshLayout.isRefreshing = false // 새로고침 애니메이션 중지
-            startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt()) //원형 그래프 로딩 애니메이션
+            startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt())
         }
 
-        startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt()) //화면 처음 로딩시 원형 그래프 로딩 애니메이션
+        //화면 처음 로딩시 원형그래프 애니메이션 실행
+        startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt())
 
-        binding.middleBox.middleBoxBtn.setOnClickListener { //중앙 박스 클릭시
-            startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt()) //원형 그래프 로딩 애니메이션
+        //중앙 박스 클릭시 원형그래프 애니메이션 실행
+        binding.middleBox.middleBoxBtn.setOnClickListener {
+            startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt())
         }
 
         bottomEvent() //binding.BottomSheet 슬라이드
 
     }
 
+    // middle box의 삼중 그래프 애니메이션
     private fun startProgressAnimation(progress_humidity: Int, progress_temperature: Int, progress_air: Int) {
         val animator1 = ObjectAnimator.ofInt(binding.middleBox.progressBar1, "progress", 0, progress_humidity)
         val animator2 = ObjectAnimator.ofInt(binding.middleBox.progressBar2, "progress", 0, progress_temperature)
@@ -159,6 +167,7 @@ class MainActivity : AppCompatActivity() {
         animator2.start()
         animator3.start()
     }
+    // Bottom Sheet Slide Event
     private fun bottomEvent() {
         val bottomBehavior = BottomSheetBehavior.from(binding.bottomSheet.root)
 
@@ -166,14 +175,13 @@ class MainActivity : AppCompatActivity() {
         var maxHeight = binding.middleBox.middleBoxBtn.maxHeight
         var minHeight = binding.middleBox.middleBoxBtn.minHeight
 
-        //binding.middleBox.layoutMiddleBox.layoutParams = layoutParams
-
         bottomBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(bottomSheet: View, slideOffset: Float) { // 슬라이드 중, 접힌 상태=0, 펼친 상태=1
+            // 슬라이드 중일 때,
+            override fun onSlide(bottomSheet: View, slideOffset: Float) { // slide offset: 접힌 상태=0, 펼친 상태=1
 
-                binding.middleBox.middleBoxBtn.apply { // 중앙 박스(버튼) 크기 조절
-                    //layoutParams.height = (maxHeight * (1.0 - slideOffset)).toInt()
+                // 중앙 박스(버튼) 크기 조절
+                binding.middleBox.middleBoxBtn.apply {
                     layoutParams.height = (minHeight + (maxHeight - minHeight) * (1.0 - slideOffset)).toInt()
                     binding.middleBox.middleBoxBtn.layoutParams = layoutParams
                 }
@@ -181,43 +189,48 @@ class MainActivity : AppCompatActivity() {
                 if (slideOffset <= 0.1) { // 접힌 상태
                     binding.bottomSheet.sixBtnCollapsed.isVisible=true
                     binding.bottomSheet.sixBtnExpanded.visibility= GONE
-
-                    binding.middleBox.progressBarTotalText.visibility = GONE // 막대그래프(middle box collapsed) 텍스트 숨기기
-                    binding.middleBox.progressBar1.isVisible = true // 원형그래프1(middle box expanded) 보이기
-                    binding.middleBox.progressBar2.isVisible = true // 원형그래프1(middle box expanded) 보이기
-                    binding.middleBox.progressBar3.isVisible = true // 원형그래프1(middle box expanded) 보이기
-                    binding.middleBox.progressBar1Text1.isVisible = true // 원형그래프(middle box expanded) 텍스트1 보이기
-                    binding.middleBox.progressBar1Text2.isVisible = true // 원형그래프(middle box expanded) 텍스트2 보이기
-                    binding.middleBox.progressBar1Text3.isVisible = true // 원형그래프(middle box expanded) 텍스트3 보이기
-                    binding.middleBox.progressBar1Text4.isVisible = true // 원형그래프(middle box expanded) 텍스트4 보이기
+                    //막대그래프 텍스트 숨기기
+                    binding.middleBox.progressBarTotalText.visibility = GONE
+                    //원형그래프 보이기
+                    binding.middleBox.progressBar1.isVisible = true
+                    binding.middleBox.progressBar2.isVisible = true
+                    binding.middleBox.progressBar3.isVisible = true
+                    //원형그래프 텍스트 보이기
+                    binding.middleBox.progressBar1Text1.isVisible = true
+                    binding.middleBox.progressBar1Text2.isVisible = true
+                    binding.middleBox.progressBar1Text3.isVisible = true
+                    binding.middleBox.progressBar1Text4.isVisible = true
 
                 } else if (slideOffset<0.15) {
                     binding.bottomSheet.sixBtnCollapsed.isVisible=true
                     binding.bottomSheet.sixBtnExpanded.visibility= GONE
-
-                    binding.middleBox.progressBar1.visibility = GONE // 원형그래프(middle box expanded) 숨기기
-                    binding.middleBox.progressBar2.visibility = GONE // 원형그래프(middle box expanded) 숨기기
-                    binding.middleBox.progressBar3.visibility = GONE // 원형그래프(middle box expanded) 숨기기
+                    //원형그래프 숨기기
+                    binding.middleBox.progressBar1.visibility = GONE
+                    binding.middleBox.progressBar2.visibility = GONE
+                    binding.middleBox.progressBar3.visibility = GONE
 
                 } else if (slideOffset<0.9) {
                     binding.bottomSheet.sixBtnCollapsed.visibility= GONE
                     binding.bottomSheet.sixBtnExpanded.isVisible=true
-
-                    binding.middleBox.progressBarTotal.visibility = GONE // 막대그래프(middle box collapsed) 숨기기
-                    binding.middleBox.progressBar1.visibility = GONE // 원형그래프(middle box expanded) 숨기기
-                    binding.middleBox.progressBar2.visibility = GONE // 원형그래프(middle box expanded) 숨기기
-                    binding.middleBox.progressBar3.visibility = GONE // 원형그래프(middle box expanded) 숨기기
+                    //막대그래프 숨기기
+                    binding.middleBox.progressBarTotal.visibility = GONE
+                    //원형그래프 숨기기
+                    binding.middleBox.progressBar1.visibility = GONE
+                    binding.middleBox.progressBar2.visibility = GONE
+                    binding.middleBox.progressBar3.visibility = GONE
 
                 } else if (0.9 <= slideOffset) { // 펼친 상태
                     binding.bottomSheet.sixBtnCollapsed.visibility= GONE
                     binding.bottomSheet.sixBtnExpanded.isVisible=true
-
-                    binding.middleBox.progressBar1Text1.visibility = GONE // 원형그래프(middle box expanded) 텍스트1 숨기기
-                    binding.middleBox.progressBar1Text2.visibility = GONE // 원형그래프(middle box expanded) 텍스트2 숨기기
-                    binding.middleBox.progressBar1Text3.visibility = GONE // 원형그래프(middle box expanded) 텍스트3 숨기기
-                    binding.middleBox.progressBar1Text4.visibility = GONE // 원형그래프(middle box expanded) 텍스트4 숨기기
-                    binding.middleBox.progressBarTotal.isVisible = true // 막대그래프(middle box collapsed) 보이기
-                    binding.middleBox.progressBarTotalText.isVisible = true // 막대그래프(middle box collapsed) 텍스트 보이기
+                    //원형그래프 텍스트 숨기기
+                    binding.middleBox.progressBar1Text1.visibility = GONE
+                    binding.middleBox.progressBar1Text2.visibility = GONE
+                    binding.middleBox.progressBar1Text3.visibility = GONE
+                    binding.middleBox.progressBar1Text4.visibility = GONE
+                    //막대그래프 보이기
+                    binding.middleBox.progressBarTotal.isVisible = true
+                    //막대그래프 텍스트 보이기
+                    binding.middleBox.progressBarTotalText.isVisible = true
                 }
             }
             override fun onStateChanged(bottomSheet: View, newState: Int) { // 뷰의 상태에 따른 변화
@@ -228,7 +241,7 @@ class MainActivity : AppCompatActivity() {
                     BottomSheetBehavior.STATE_DRAGGING-> { } // 드래그 중일 때
                 }
             }
-        }) //bottomBehavior.addBottomSheetCallback 설정
+        })
     }
 
 }
