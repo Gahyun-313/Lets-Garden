@@ -21,18 +21,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.ResultSet
 import kotlin.math.roundToInt
 
 
 class MainActivity : AppCompatActivity() {
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-    private var currentHumidity: Double = 40.0
-    private var currentTemperature: Double = 45.0
-    private var currentAir: Double = 10.0
+    private var currentHumidity: Double = 1.0
+    private var currentTemperature: Double = 1.0
+    private var currentAir: Double = 1.0
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +51,10 @@ class MainActivity : AppCompatActivity() {
         swipeRefreshLayout.setOnRefreshListener { // 화면 끌어내려 새로고침
 
             // 데이터를 새로 갱신
-            fetchData()
+            CoroutineScope(Dispatchers.Main).launch {
+                fetchData1()
+                startProgressAnimation() //그래프 애니메이션 실행
+            }
 
             swipeRefreshLayout.isRefreshing = false // 새로고침 애니메이션 중지
             startProgressAnimation() //그래프 애니메이션 실행
@@ -71,50 +71,29 @@ class MainActivity : AppCompatActivity() {
         bottomEvent() //binding.BottomSheet 슬라이드
 
     }
-    private fun fetchData() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val data = fetchFromDatabase()
-            withContext(Dispatchers.Main) {
-                currentHumidity = data.first
-                currentTemperature = data.second
-                currentAir = data.third
-                updateUI()
-            }
+
+    private suspend fun fetchData1() {
+        val (humidity, temperature, airQuality) = withContext(Dispatchers.IO) {
+            DatabaseTask.fetchData()
         }
+        // 받아온 값을 변수에 할당
+        currentHumidity = humidity
+        currentTemperature = temperature
+        currentAir = airQuality
+
+        // UI 업데이트
+        updateUI(humidity, temperature, airQuality)
     }
-    
-    private suspend fun fetchFromDatabase(): Triple<Double, Double, Double> {
-        // TODO: 무슨 함수인지 공부
-        return withContext(Dispatchers.IO) {
-            val dbUrl = "jdbc:mariadb://<YourDBHost>:<Port>/<DatabaseName>"
-            val dbUser = "<YourDBUser>"
-            val dbPassword = "<YourDBPassword>"
-            var humidity = 0.0
-            var temperature = 0.0
-            var air = 0.0
 
-            try {
-                Class.forName("org.mariadb.jdbc.Driver")
-                val connection: Connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword)
-                val statement = connection.createStatement()
-                val resultSet: ResultSet = statement.executeQuery("SELECT humidity, temperature, air FROM your_table_name ORDER BY id DESC LIMIT 1")
+    private fun updateUI(humidity: Double, temperature: Double, airQuality: Double) {
+        var currentHumidity = humidity
+        var currentTemperature = temperature
+        var currentAir = airQuality
 
-                if (resultSet.next()) {
-                    humidity = resultSet.getDouble("humidity")
-                    temperature = resultSet.getDouble("temperature")
-                    air = resultSet.getDouble("air")
-                }
-
-                resultSet.close()
-                statement.close()
-                connection.close()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-            Triple(humidity, temperature, air)
-        }
+        // 업데이트된 데이터를 사용하여 UI를 갱신하는 코드 작성
+        // 예를 들어, 텍스트뷰의 값을 변경하거나 프로그레스바를 업데이트하는 등의 작업
     }
+
     @SuppressLint("SetTextI18n")
     private fun updateUI() {
         //  **  적정값 설정 **
@@ -212,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     private fun startProgressAnimation() {
         val progressHumidity = (100 * (currentHumidity / 50.0)).toInt()
         val progressTemperature = (100 * (currentTemperature / 50.0)).toInt()
-        val progressAir = (100 * (currentAir / 50.0)).toInt()
+        val progressAir = (100 * (currentAir / 100.0)).toInt()
 
         val animator1 = ObjectAnimator.ofInt(binding.middleBox.progressBar1, "progress", 0, progressHumidity)
         val animator2 = ObjectAnimator.ofInt(binding.middleBox.progressBar2, "progress", 0, progressTemperature)
