@@ -36,7 +36,6 @@
     <!-- Bottom Sheet -->
     <include
         android:id="@+id/bottom_sheet"
-        layout="@layout/layout_bottom_sheet"
-        android:layout_gravity="bottom" />
+        layout="@layout/layout_bottom_sheet" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

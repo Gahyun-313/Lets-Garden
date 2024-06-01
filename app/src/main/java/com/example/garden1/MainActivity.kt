@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        // TODO: retrofit 라이브러리 이용해 HTTP 통신해야 함
+
         //  **  적정값 설정 **
         var origin_humidity = 50.0; var origin_temperature = 50.0; var origin_air = 50.0
         //var origin_humidity: Double = (getString(R.string.origin_humidity)).toDouble() //@values/strings에서 데이터 가져오는 법(getString()은 리소스의 id를 받음을 주의)
@@ -127,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val swipeRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
-        swipeRefreshLayout.setOnRefreshListener {
+        swipeRefreshLayout.setOnRefreshListener { // 화면 끌어내려 새로고침
             swipeRefreshLayout.isRefreshing = false // 새로고침 애니메이션 중지
             startProgressAnimation(progress_humidity.toInt(), progress_temperature.toInt(), progress_air.toInt()) //원형 그래프 로딩 애니메이션
         }

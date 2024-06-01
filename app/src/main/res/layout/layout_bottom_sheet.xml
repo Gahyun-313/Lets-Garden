@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="570dp"
     android:minHeight="420dp"
     android:background="@drawable/bottom_sheet_background"
 
-    app:behavior_peekHeight="300dp"
+    app:behavior_peekHeight="270dp"
     android:orientation="vertical"
     android:paddingHorizontal="25dp"
     android:paddingBottom="30dp"
@@ -48,18 +48,18 @@
         android:text="현재 상태"
         android:fontFamily="@font/pretendard_extrabold"
         android:textColor="@color/black"
-        android:textSize="20sp"/>
+        android:textSize="17sp"/>
 
     <!--"잘 성장할 수 있도록 체크해주세요!"-->
     <TextView
         android:id="@+id/sub_text"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="20dp"
         android:gravity="center_vertical"
         android:text="잘 성장할 수 있도록 체크해주세요!"
         android:fontFamily="@font/pretendard_medium"
         android:textColor="@color/bottom_sheet_text2"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:layout_marginBottom="10dp"/>
 
 
@@ -72,8 +72,8 @@
         <LinearLayout
             android:id="@+id/six_btn_collapsed"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:minHeight="280dp"
+            android:layout_height="250dp"
+            android:minHeight="250dp"
             android:orientation="vertical"
             android:paddingBottom="100dp">
 
