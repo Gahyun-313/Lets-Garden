@@ -14,8 +14,9 @@
 <img src="https://github.com/Gahyun-313/Garden1/assets/78289372/96386502-d4d5-4ed9-a985-0b6bc9450c39" width="200"/>
 <img src="https://github.com/Gahyun-313/Garden1/assets/78289372/1dfadf0a-8769-480b-bc1b-d3bbe4b6817b" width="200"/>
 
-![슬라이드2](https://github.com/user-attachments/assets/b539a1f3-6f4d-4d33-8329-1acf461f655a)
+
 ![슬라이드3](https://github.com/user-attachments/assets/686aca83-c15a-4a50-9750-bf1cb5cc7b2f)
+![슬라이드2](https://github.com/user-attachments/assets/b539a1f3-6f4d-4d33-8329-1acf461f655a)
 ![슬라이드21](https://github.com/user-attachments/assets/59a5a4a3-828e-46d9-9924-1b3ce2466271)
 ![슬라이드22](https://github.com/user-attachments/assets/6324e100-c384-45a1-8520-07de6a6b6a9a)
 ![슬라이드24](https://github.com/user-attachments/assets/7c31724b-9106-445c-bd35-f5aa66fa1659)
