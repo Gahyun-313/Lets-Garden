@@ -13,9 +13,9 @@ object DatabaseTask {
             var temperature = 0.0
             var airQuality = 0.0
 
-            val jdbcUrl = "jdbc:mariadb://192.168.219.105:3306/PlantMonitoring"
-            val dbUser = "root"
-            val dbPassword = "1234"
+            // val jdbcUrl = "jdbc:mariadb://IP주소"
+            // val dbUser = "root"
+            // val dbPassword = "1234"
 
             var connection: Connection? = null
             var resultSet: ResultSet? = null
